@@ -14,4 +14,4 @@ for each_dir in work_queue:
     cmd = ["scp","changming@129.10.122.21:{}".format(os.path.join("/home/changming/",remote_dir,each_dir,file_to_download)),os.path.join(local_dir,each_dir)]
     print(cmd)
     sp = subprocess.Popen(cmd)
-    time.sleep(3)
+    time.sleep(4)
