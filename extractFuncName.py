@@ -8,7 +8,11 @@ def funcNameExtract(file):
     except CalledProcessError as e:
         output = e.output
     output = output.decode('utf-8')
-    output = json.loads(output)
+    try:
+        output = json.loads(output)
+    except:
+        print("dbg func name extract")
+        embed()
     assert(output['kind'] == 'TranslationUnitDecl')
     ret = []
     for eachEntry in output['inner']:
@@ -19,8 +23,9 @@ def funcNameExtract(file):
             continue
         ## filter extern
         if('storageClass' in eachEntry):
-            assert(eachEntry['storageClass'] == 'extern')
-            continue
+            if eachEntry['storageClass'] == 'extern':
+                continue
+            assert(eachEntry['storageClass'] == 'static') ## allow static
         ## filter function decl without function definition
         if('inner' not in eachEntry):
             continue
