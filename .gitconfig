@@ -1,0 +1,7 @@
+[user]
+	email = charley.ashbringer@gmail.com
+	name = Changming Liu
+[core]
+        autocrlf = false
+        eol = lf
+
